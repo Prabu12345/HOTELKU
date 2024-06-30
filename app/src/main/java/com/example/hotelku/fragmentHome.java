@@ -2,40 +2,44 @@ package com.example.hotelku;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
 
-import androidx.activity.EdgeToEdge;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.graphics.Insets;
-import androidx.core.view.ViewCompat;
+import androidx.annotation.Nullable;
 import androidx.core.view.WindowInsetsCompat;
+import androidx.fragment.app.Fragment;
 
-public class dashboard extends AppCompatActivity {
+public class fragmentHome extends Fragment {
     private TextView tampilPassword, tampilNama, tampilJenisKelamin, tampilTanggalLahir, tampilAlamat, tampilEmail;
     private String getPassword = "password", getNama = "nama", getJenisKelamin = "jenisKelamin", getTanggalLahir = "tanggalLahir", getAlamat = "alamat", getEmail = "email";
     private String setPassword, setNama, setJenisKelamin, setTanggalLahir, setAlamat, setEmail;
     private Button button;
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        EdgeToEdge.enable(this);
-        setContentView(R.layout.activity_dashboard);
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
-            Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
-            return insets;
-        });
+    public fragmentHome() {
 
-        tampilNama = findViewById(R.id.namaCard);
+    }
+
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+    }
+
+    @Nullable
+    @Override
+    public View onCreateView(@Nullable LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+        View view =  inflater.inflate(R.layout.fragment_beranda, container, false);
+
+        tampilNama = view.findViewById(R.id.namaCard);
         // tampilPassword = findViewById(R.id.nikValue);
         // tampilJenisKelamin = findViewById(R.id.jkValue);
-        tampilTanggalLahir = findViewById(R.id.tanggalLahirCard);
+        tampilTanggalLahir = view.findViewById(R.id.tanggalLahirCard);
         // tampilAlamat = findViewById(R.id.alamatValue);
-        tampilEmail = findViewById(R.id.emailCard);
+        tampilEmail = view.findViewById(R.id.emailCard);
 
-        Intent terima = getIntent();
+        Intent terima = getActivity().getIntent();
         setNama = terima.getStringExtra(getNama);
         setPassword = terima.getStringExtra(getPassword);
         setJenisKelamin = terima.getStringExtra(getJenisKelamin);
@@ -49,5 +53,6 @@ public class dashboard extends AppCompatActivity {
         tampilTanggalLahir.setText(setTanggalLahir);
         // tampilAlamat.setText(setAlamat);
         tampilEmail.setText(setEmail);
+        return view;
     }
 }

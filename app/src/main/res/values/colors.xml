@@ -3,7 +3,10 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
     <color name="light">#FAFAF6</color>
-    <color name="blue">#00D1FF</color>
+    <color name="blue">#3ABEF9</color>
     <color name="cyan">#00FFF0</color>
     <color name="darkblue">#3D6CB9</color>
+    <color name="gray">#F5F7F8</color>
+    <color name="aqua">#A7E6FF</color>
+    <color name="silver">#939185</color>
 </resources>

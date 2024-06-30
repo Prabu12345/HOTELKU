@@ -1,3 +1,13 @@
 <resources>
     <string name="app_name">HOTELKU</string>
+    <string name="Home">Home</string>
+    <string name="Profile">Account</string>
+    <string name="Name">Name</string>
+    <string name="Date">Date of birth</string>
+    <string name="Email">Email</string>
+    <string name="edit_profile">Edit Account</string>
+    <string name="transaction_history">Transaction History</string>
+    <string name="help_center">Help Center</string>
+
+    <dimen name="grid">80dp</dimen>
 </resources>

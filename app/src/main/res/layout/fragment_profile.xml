@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/gray"
+    android:orientation="vertical"
+    tools:context=".fragmentHome">
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/profileCards"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="-10dp"
+        app:cardCornerRadius="20dp"
+        app:cardElevation="10dp">
+
+        <RelativeLayout
+            android:id="@+id/dashboardCard"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/aqua"
+            android:paddingHorizontal="20dp"
+            android:paddingTop="5dp">
+
+            <TextView
+                android:id="@+id/tittle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="3dp"
+                android:text="@string/Profile"
+                android:textAlignment="center"
+                android:textSize="25sp"
+                android:textStyle="bold" />
+
+            <ImageView
+                android:id="@+id/avatarImage"
+                android:layout_width="155dp"
+                android:layout_height="155dp"
+                android:layout_below="@id/tittle"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="60dp"
+                android:background="@drawable/buttonroundcorner"
+                android:elevation="3dp"
+                android:foreground="@drawable/ic_account"
+                android:foregroundGravity="center|fill"
+                android:foregroundTint="@color/blue"
+                android:scaleType="center" />
+
+            <TextView
+                android:id="@+id/namaCard"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/avatarImage"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="3dp"
+                android:text="@string/Name"
+                android:textAlignment="center"
+                android:textSize="27sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/emailCard"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/namaCard"
+                android:layout_marginBottom="35dp"
+                android:text="@string/Email"
+                android:textAlignment="center"
+                android:textSize="18sp" />
+        </RelativeLayout>
+    </androidx.cardview.widget.CardView>
+
+    <Button
+        android:id="@+id/editProfileButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/profileCards"
+        android:layout_marginTop="15dp"
+        android:background=""
+        android:drawableLeft="@drawable/ic_account_med"
+        android:drawablePadding="20dp"
+        android:drawableTint="@color/black"
+        android:text="@string/edit_profile"
+        android:textAlignment="textStart"
+        android:textColor="@color/black"
+        android:textSize="20sp" />
+
+    <Button
+        android:id="@+id/transHistoryButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/editProfileButton"
+        android:layout_marginTop="10dp"
+        android:background=""
+        android:drawableLeft="@drawable/ic_history"
+        android:drawablePadding="20dp"
+        android:drawableTint="@color/black"
+        android:text="@string/transaction_history"
+        android:textAlignment="textStart"
+        android:textColor="@color/black"
+        android:textSize="20sp" />
+
+    <Button
+        android:id="@+id/helpCenterButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/transHistoryButton"
+        android:layout_marginTop="10dp"
+        android:background=""
+        android:drawableLeft="@drawable/ic_help"
+        android:drawablePadding="20dp"
+        android:drawableTint="@color/black"
+        android:text="@string/help_center"
+        android:textAlignment="textStart"
+        android:textColor="@color/black"
+        android:textSize="20sp" />
+
+</RelativeLayout>
