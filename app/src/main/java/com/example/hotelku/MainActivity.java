@@ -18,6 +18,7 @@ public class MainActivity extends AppCompatActivity {
     private fragmentHome homeFragment = new fragmentHome();
     private fragmentProfile profileFragment = new fragmentProfile();
 
+
     void initUI() {
         container = findViewById(R.id.container);
         botNav = findViewById(R.id.bottomNav);

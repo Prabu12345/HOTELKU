@@ -8,6 +8,29 @@
     <string name="edit_profile">Edit Account</string>
     <string name="transaction_history">Transaction History</string>
     <string name="help_center">Help Center</string>
+    <string name="edit_account">Edit Account</string>
+    <string name="avatar">Avatar</string>
+    <string name="password">Password</string>
+    <string name="birth_of_date">Birth Of Date</string>
+    <string name="address">Address</string>
+    <string name="register">REGISTER</string>
+    <string name="male">Male</string>
+    <string name="female">Female</string>
+    <string name="gender">Gender</string>
+    <string name="edit">Edit</string>
+    <string name="registrasi_hotelku">Registrasi HOTELKU</string>
+    <string name="login_hotelku">Login HOTELKU</string>
+    <string name="login">Login</string>
+    <string name="login_with_google">Login With Google</string>
+    <string name="cancel">Cancel</string>
+    <string name="don_t_have_account">don\'t have account?</string>
+    <string name="sign_out">Sign Out</string>
+    <string name="check_in">Check-in</string>
+    <string name="reservation">Reservation</string>
+    <string name="check_out">Check-Out</string>
+    <string name="no_check_out">No Check-out</string>
+    <string name="no_check_in">No Check-in</string>
+    <string name="no_room">No Room</string>
 
     <dimen name="grid">80dp</dimen>
 </resources>

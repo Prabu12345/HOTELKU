@@ -6,17 +6,34 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 import androidx.core.view.WindowInsetsCompat;
 import androidx.fragment.app.Fragment;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.firestore.FirebaseFirestore;
+
 public class fragmentHome extends Fragment {
-    private TextView tampilPassword, tampilNama, tampilJenisKelamin, tampilTanggalLahir, tampilAlamat, tampilEmail;
-    private String getPassword = "password", getNama = "nama", getJenisKelamin = "jenisKelamin", getTanggalLahir = "tanggalLahir", getAlamat = "alamat", getEmail = "email";
-    private String setPassword, setNama, setJenisKelamin, setTanggalLahir, setAlamat, setEmail;
-    private Button button;
+
+    private FirebaseAuth mAuth;
+
+    private TextView tampilNama, tampilTanggalLahir, tampilEmail;
+    private ImageButton chInButton, reservButton, chOutButton;
+
+    void initUI(View view) {
+        tampilNama = view.findViewById(R.id.namaCard);
+        tampilTanggalLahir = view.findViewById(R.id.tanggalLahirCard);
+        tampilEmail = view.findViewById(R.id.emailCard);
+        chInButton = view.findViewById(R.id.checkinButton);
+        chOutButton = view.findViewById(R.id.checkoutButton);
+        reservButton = view.findViewById(R.id.reservationButton);
+
+    }
 
     public fragmentHome() {
 
@@ -32,27 +49,60 @@ public class fragmentHome extends Fragment {
     public View onCreateView(@Nullable LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view =  inflater.inflate(R.layout.fragment_beranda, container, false);
 
-        tampilNama = view.findViewById(R.id.namaCard);
-        // tampilPassword = findViewById(R.id.nikValue);
-        // tampilJenisKelamin = findViewById(R.id.jkValue);
-        tampilTanggalLahir = view.findViewById(R.id.tanggalLahirCard);
-        // tampilAlamat = findViewById(R.id.alamatValue);
-        tampilEmail = view.findViewById(R.id.emailCard);
+        initUI(view);
 
-        Intent terima = getActivity().getIntent();
-        setNama = terima.getStringExtra(getNama);
-        setPassword = terima.getStringExtra(getPassword);
-        setJenisKelamin = terima.getStringExtra(getJenisKelamin);
-        setTanggalLahir = terima.getStringExtra(getTanggalLahir);
-        setAlamat = terima.getStringExtra(getAlamat);
-        setEmail = terima.getStringExtra(getEmail);
+        mAuth = FirebaseAuth.getInstance();
 
-        tampilNama.setText(setNama);
-        // tampilPassword.setText(setPassword);
-        // tampilJenisKelamin.setText(setJenisKelamin);
-        tampilTanggalLahir.setText(setTanggalLahir);
-        // tampilAlamat.setText(setAlamat);
-        tampilEmail.setText(setEmail);
+        loadUserProfile();
+
+        chInButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getActivity(), Checkin.class));
+                getActivity().finish();
+            }
+        });
+
+        chOutButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getActivity(), Checkout.class));
+                getActivity().finish();
+            }
+        });
+
+        reservButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getActivity(), Reservation.class));
+                getActivity().finish();
+            }
+        });
+
         return view;
+    }
+
+    private void loadUserProfile() {
+        FirebaseUser user = mAuth.getCurrentUser();
+        if (user != null) {
+            String userId = user.getUid();
+
+            FirebaseFirestore db = FirebaseFirestore.getInstance();
+            db.collection("users").document(userId).get()
+                    .addOnSuccessListener(documentSnapshot -> {
+                        if (documentSnapshot.exists()) {
+                            String username = documentSnapshot.getString("username");
+                            String email = documentSnapshot.getString("email");
+                            String birthdate = documentSnapshot.getString("birthdate");
+
+                            tampilNama.setText(username);
+                            tampilEmail.setText(email);
+                            tampilTanggalLahir.setText(birthdate);
+                        } else {
+                            Toast.makeText(getActivity(), "User profile not found.", Toast.LENGTH_SHORT).show();
+                        }
+                    })
+                    .addOnFailureListener(e -> Toast.makeText(getActivity(), "Failed to load user profile: " + e.getMessage(), Toast.LENGTH_SHORT).show());
+        }
     }
 }

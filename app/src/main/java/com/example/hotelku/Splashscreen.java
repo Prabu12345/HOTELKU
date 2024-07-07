@@ -13,8 +13,11 @@ import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.firebase.auth.FirebaseAuth;
 
 public class Splashscreen extends AppCompatActivity {
+
+    private FirebaseAuth mAuth;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,9 +35,19 @@ public class Splashscreen extends AppCompatActivity {
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
-                Intent i = new Intent(Splashscreen.this, Registrasi.class);
-                startActivity(i);
-                finish();
+                mAuth = FirebaseAuth.getInstance();
+
+                // Check if user is already logged in
+                if (mAuth.getCurrentUser() != null) {
+                    startActivity(new Intent(Splashscreen.this, MainActivity.class));
+                    finish();
+                } else {
+                    Intent i = new Intent(Splashscreen.this, Login.class);
+                    startActivity(i);
+                    finish();
+                }
+
+
             }
         }, 3000);
     }
