@@ -15,7 +15,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true">
 
-        <ImageButton
+        <ImageView
             android:id="@+id/profile"
             android:layout_width="60dp"
             android:layout_height="60dp"
@@ -23,6 +23,7 @@
             android:layout_marginHorizontal="20dp"
             android:layout_marginVertical="20dp"
             android:background="@drawable/roundcorner"
+            android:contentDescription="@string/avatar"
             android:scaleType="centerInside"
             android:src="@drawable/ic_account_db" />
 
@@ -71,8 +72,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/namaCard"
-                android:text="@string/Date"
                 android:layout_marginBottom="3dp"
+                android:text="@string/Date"
                 android:textSize="16sp" />
 
             <TextView
@@ -80,9 +81,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/tanggalLahirCard"
+                android:layout_marginBottom="20dp"
                 android:text="@string/Email"
-                android:textSize="16sp"
-                android:layout_marginBottom="20dp"/>
+                android:textSize="16sp" />
 
             <androidx.cardview.widget.CardView
                 android:id="@+id/bookedCard"
@@ -156,6 +157,7 @@
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="10dp"
                 android:background="@drawable/buttonroundcorner"
+                android:contentDescription="@string/check_in"
                 android:elevation="3dp"
                 android:foreground="@drawable/ic_checkin"
                 android:foregroundGravity="center"
@@ -168,6 +170,7 @@
                 android:layout_below="@id/checkinButton"
                 android:layout_marginTop="5dp"
                 android:layout_marginBottom="10dp"
+                android:labelFor="@id/checkinButton"
                 android:text="@string/check_in"
                 android:textAlignment="center"
                 android:textSize="20sp"
@@ -186,6 +189,7 @@
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="10dp"
                 android:background="@drawable/buttonroundcorner"
+                android:contentDescription="@string/reservation"
                 android:elevation="3dp"
                 android:foreground="@drawable/ic_reserv"
                 android:foregroundGravity="center"
@@ -198,6 +202,7 @@
                 android:layout_below="@id/reservationButton"
                 android:layout_marginTop="5dp"
                 android:layout_marginBottom="10dp"
+                android:labelFor="@id/reservationButton"
                 android:text="@string/reservation"
                 android:textAlignment="center"
                 android:textSize="20sp"
@@ -215,6 +220,7 @@
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="10dp"
                 android:background="@drawable/buttonroundcorner"
+                android:contentDescription="@string/check_out"
                 android:elevation="3dp"
                 android:foreground="@drawable/ic_checkout"
                 android:foregroundGravity="center"
@@ -227,6 +233,7 @@
                 android:layout_below="@id/checkoutButton"
                 android:layout_marginTop="5dp"
                 android:layout_marginBottom="10dp"
+                android:labelFor="@id/checkoutButton"
                 android:text="@string/check_out"
                 android:textAlignment="center"
                 android:textSize="20sp"

@@ -48,12 +48,13 @@
 
                 <ImageButton
                     android:id="@+id/editAvatarButton"
-                    android:layout_width="35dp"
-                    android:layout_height="35dp"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
                     android:layout_alignEnd="@id/avatarImage"
                     android:layout_alignBottom="@id/avatarImage"
                     android:background="@drawable/buttonroundcorner"
                     android:backgroundTint="@color/blue"
+                    android:contentDescription="@string/edit_avatar"
                     android:scaleType="center"
                     android:src="@drawable/ic_edit"
                     android:translationZ="4dp" />
@@ -64,6 +65,7 @@
                     android:layout_height="120dp"
                     android:layout_centerHorizontal="true"
                     android:background="@drawable/roundcorner"
+                    android:contentDescription="@string/avatar"
                     android:elevation="3dp"
                     android:scaleType="fitCenter"
                     android:src="@drawable/ic_account" />
@@ -142,23 +144,23 @@
             <RadioButton
                 android:id="@+id/radioMale"
                 android:layout_width="130dp"
-                android:layout_height="40dp"
+                android:layout_height="50dp"
                 android:buttonTint="@color/white"
                 android:checked="true"
                 android:text="@string/male"
                 android:textColor="@color/silver"
                 android:textColorHighlight="@color/cardview_dark_background"
-                android:textSize="17sp"
+                android:textSize="18sp"
                 android:textStyle="bold" />
 
             <RadioButton
                 android:id="@+id/radioFemale"
                 android:layout_width="match_parent"
-                android:layout_height="40dp"
+                android:layout_height="50dp"
                 android:text="@string/female"
                 android:textColor="@color/silver"
                 android:textColorHighlight="@color/cardview_dark_background"
-                android:textSize="17sp"
+                android:textSize="18sp"
                 android:textStyle="bold" />
         </RadioGroup>
     </RelativeLayout>

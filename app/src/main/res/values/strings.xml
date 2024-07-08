@@ -31,6 +31,7 @@
     <string name="no_check_out">No Check-out</string>
     <string name="no_check_in">No Check-in</string>
     <string name="no_room">No Room</string>
+    <string name="edit_avatar">Edit Avatar</string>
 
     <dimen name="grid">80dp</dimen>
 </resources>
