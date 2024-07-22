@@ -15,13 +15,19 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
-import com.google.android.gms.tasks.*;
-import com.google.android.material.datepicker.MaterialDatePicker;
-import com.google.firebase.auth.*;
-import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.AuthResult;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseAuthUserCollisionException;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
-import java.text.SimpleDateFormat;
-import java.util.*;
+import com.example.hotelku.module.function;
+import com.example.hotelku.module.userModel;
+
+import java.util.Date;
 
 public class Register extends AppCompatActivity {
 
@@ -30,7 +36,7 @@ public class Register extends AppCompatActivity {
     private Button button;
 
     private FirebaseAuth mAuth;
-    private FirebaseFirestore db;
+    private DatabaseReference db;
 
     void initUI() {
         namaET = findViewById(R.id.editTextNama);
@@ -51,12 +57,12 @@ public class Register extends AppCompatActivity {
         initUI();
 
         mAuth = FirebaseAuth.getInstance();
-        db = FirebaseFirestore.getInstance();
+        db = FirebaseDatabase.getInstance().getReference("users"); // Initialize Realtime Database reference
 
         tanggalLahirET.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                showDatePicker();
+                function.showDatePickerBOD(Register.this, tanggalLahirET);
             }
         });
 
@@ -100,18 +106,25 @@ public class Register extends AppCompatActivity {
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()) {
                             FirebaseUser user = mAuth.getCurrentUser();
-                            String userId = user.getUid();
+                            if (user != null) {
+                                String userId = user.getUid();
 
-                            UserProfile profile = new UserProfile(username, email, address, birthdate, gender);
-                            db.collection("users").document(userId).set(profile)
-                                    .addOnSuccessListener(aVoid -> {
-                                        Toast.makeText(Register.this, "Registration successful.", Toast.LENGTH_SHORT).show();
-                                        startActivity(new Intent(Register.this, MainActivity.class));
-                                        finish();
-                                    })
-                                    .addOnFailureListener(e -> {
-                                        Toast.makeText(Register.this, "Error: " + e.getMessage(), Toast.LENGTH_SHORT).show();
-                                    });
+                                userModel profile = new userModel(username, email, address, function.convertStringToDate(birthdate).getTime(), gender, getString(R.string.defaultAvatar));
+
+                                db.child(userId).setValue(profile)
+                                        .addOnCompleteListener(new OnCompleteListener<Void>() {
+                                            @Override
+                                            public void onComplete(@NonNull Task<Void> task) {
+                                                if (task.isSuccessful()) {
+                                                    Toast.makeText(Register.this, "Registration successful.", Toast.LENGTH_SHORT).show();
+                                                    startActivity(new Intent(Register.this, MainActivity.class));
+                                                    finish();
+                                                } else {
+                                                    Toast.makeText(Register.this, "Error: " + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
+                                                }
+                                            }
+                                        });
+                            }
                         } else {
                             String errorMessage = task.getException().getMessage();
                             if (task.getException() instanceof FirebaseAuthUserCollisionException) {
@@ -121,40 +134,5 @@ public class Register extends AppCompatActivity {
                         }
                     }
                 });
-    }
-
-    private void showDatePicker() {
-        // Buat MaterialDatePicker dengan tipe DATE
-        MaterialDatePicker.Builder<Long> builder = MaterialDatePicker.Builder.datePicker();
-        builder.setTitleText("Pilih Tanggal Lahir");
-
-        final MaterialDatePicker<Long> materialDatePicker = builder.build();
-
-        // Set listener saat tanggal dipilih
-        materialDatePicker.addOnPositiveButtonClickListener(selection -> {
-            // Format tanggal yang dipilih
-            SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy", Locale.getDefault());
-            String formattedDate = sdf.format(new Date(selection));
-            tanggalLahirET.setText(formattedDate);
-        });
-
-        // Tampilkan date picker
-        materialDatePicker.show(getSupportFragmentManager(), "DATE_PICKER");
-    }
-
-    private static class UserProfile {
-        public String username;
-        public String email;
-        public String address;
-        public String birthdate;
-        public String gender;
-
-        public UserProfile(String username, String email, String address, String birthdate, String gender) {
-            this.username = username;
-            this.email = email;
-            this.address = address;
-            this.birthdate = birthdate;
-            this.gender = gender;
-        }
     }
 }

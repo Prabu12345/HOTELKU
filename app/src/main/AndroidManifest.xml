@@ -2,6 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
 
+    <uses-permission android:name="android.permission.INTERNET"/>
     <application
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
@@ -12,6 +13,21 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.HOTELKU"
         tools:targetApi="31">
+        <activity
+            android:name=".Payments"
+            android:exported="false" />
+        <activity
+            android:name=".Details"
+            android:exported="false" />
+        <activity
+            android:name=".Checkout"
+            android:exported="false" />
+        <activity
+            android:name=".Checkin"
+            android:exported="false" />
+        <activity
+            android:name=".Reservation"
+            android:exported="false" />
         <activity
             android:name=".editProfile"
             android:exported="false" />

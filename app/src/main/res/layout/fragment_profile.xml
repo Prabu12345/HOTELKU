@@ -47,10 +47,8 @@
                 android:layout_marginTop="60dp"
                 android:background="@drawable/roundcorner"
                 android:elevation="3dp"
-                android:foreground="@drawable/ic_account"
-                android:foregroundGravity="center|fill"
-                android:foregroundTint="@color/blue"
-                android:scaleType="center" />
+                android:src="@drawable/ic_account"
+                android:scaleType="centerCrop" />
 
             <TextView
                 android:id="@+id/namaCard"
@@ -92,40 +90,10 @@
         android:textSize="20sp" />
 
     <Button
-        android:id="@+id/transHistoryButton"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/editProfileButton"
-        android:layout_marginTop="10dp"
-        android:backgroundTint="@android:color/transparent"
-        android:drawableLeft="@drawable/ic_history"
-        android:drawablePadding="20dp"
-        android:drawableTint="@color/black"
-        android:text="@string/transaction_history"
-        android:textAlignment="textStart"
-        android:textColor="@color/black"
-        android:textSize="20sp" />
-
-    <Button
-        android:id="@+id/helpCenterButton"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/transHistoryButton"
-        android:layout_marginTop="10dp"
-        android:backgroundTint="@android:color/transparent"
-        android:drawableLeft="@drawable/ic_help"
-        android:drawablePadding="20dp"
-        android:drawableTint="@color/black"
-        android:text="@string/help_center"
-        android:textAlignment="textStart"
-        android:textColor="@color/black"
-        android:textSize="20sp" />
-
-    <Button
         android:id="@+id/signOutButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/helpCenterButton"
+        android:layout_below="@id/editProfileButton"
         android:layout_marginTop="10dp"
         android:background="@android:color/transparent"
         android:drawableLeft="@drawable/ic_logout"

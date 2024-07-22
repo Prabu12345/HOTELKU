@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:paddingVertical="10dp"
+    android:paddingTop="5dp">
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/detailRoom"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginHorizontal="15dp"
+        app:cardBackgroundColor="@color/gray"
+        app:cardCornerRadius="20dp"
+        app:cardElevation="10dp">
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingHorizontal="15dp"
+            android:paddingVertical="15dp"
+            android:paddingTop="5dp">
+
+            <TextView
+                android:id="@+id/roomLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/no_room"
+                android:textAlignment="center"
+                android:textColor="@color/black"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/noRoom"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_toEndOf="@id/roomLabel"
+                android:text="@string/zero"
+                android:textAlignment="center"
+                android:textColor="@color/black"
+                android:textSize="18sp" />
+
+            <TextView
+                android:id="@+id/classLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/roomLabel"
+                android:layout_marginTop="5dp"
+                android:drawablePadding="8dp"
+                android:text="@string/classType"
+                android:textAlignment="center"
+                android:textColor="@color/silver"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                app:drawableStartCompat="@drawable/ic_class"
+                app:drawableTint="@color/silver" />
+
+            <TextView
+                android:id="@+id/typeClass"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/roomLabel"
+                android:layout_alignTop="@id/classLabel"
+                android:layout_marginStart="10dp"
+                android:layout_toEndOf="@id/classLabel"
+                android:text="@string/zero"
+                android:textAlignment="center"
+                android:textColor="@color/silver"
+                android:textSize="16sp" />
+
+            <TextView
+                android:id="@+id/availabilityLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/classLabel"
+                android:layout_marginTop="3dp"
+                android:drawablePadding="8dp"
+                android:text="@string/availability"
+                android:textAlignment="center"
+                android:textColor="@color/silver"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                app:drawableStartCompat="@drawable/ic_availability"
+                app:drawableTint="@color/silver" />
+
+            <TextView
+                android:id="@+id/availability"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/classLabel"
+                android:layout_alignTop="@id/availabilityLabel"
+                android:layout_marginStart="10dp"
+                android:layout_toEndOf="@id/availabilityLabel"
+                android:text="@string/zero"
+                android:textAlignment="center"
+                android:textColor="@color/silver"
+                android:textSize="16sp" />
+
+            <Button
+                android:id="@+id/seeDetailButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBottom="@id/availabilityLabel"
+                android:layout_alignParentEnd="true"
+                android:layout_marginEnd="5dp"
+                android:layout_marginBottom="-5dp"
+                android:backgroundTint="@color/aqua"
+                android:text="@string/see_details"
+                android:textColor="@color/black"
+                android:textStyle="bold"
+                app:cornerRadius="10dp" />
+        </RelativeLayout>
+    </androidx.cardview.widget.CardView>
+</RelativeLayout>

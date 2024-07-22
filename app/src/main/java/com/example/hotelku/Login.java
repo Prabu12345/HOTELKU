@@ -1,6 +1,5 @@
 package com.example.hotelku;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -8,6 +7,7 @@ import android.widget.*;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.gms.auth.api.signin.GoogleSignInClient;
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -16,7 +16,7 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
-public class Login extends Activity {
+public class Login extends AppCompatActivity {
 
     private FirebaseAuth mAuth;
     private GoogleSignInClient mGoogleSignInClient;
@@ -32,7 +32,6 @@ public class Login extends Activity {
         passwordEditText = findViewById(R.id.passwordEditText);
         registerButton = findViewById(R.id.registerButton);
         loginButton = findViewById(R.id.loginButton);
-        googleSignInButton = findViewById(R.id.loginWithGoogleBtn);
     }
 
     @Override

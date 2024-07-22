@@ -30,8 +30,32 @@
     <string name="check_out">Check-Out</string>
     <string name="no_check_out">No Check-out</string>
     <string name="no_check_in">No Check-in</string>
-    <string name="no_room">No Room</string>
+    <string name="no_room">No Room :</string>
     <string name="edit_avatar">Edit Avatar</string>
+    <string name="defaultAvatar"><![CDATA[https://firebasestorage.googleapis.com/v0/b/hotelku-eda07.appspot.com/o/public%2FavatarProfile.png?alt=media&token=cb489c2b-0bb2-4295-ab85-6127576dfab2]]></string>
+    <string name="back">Back</string>
+    <string name="availability">Availability :</string>
+    <string name="classType">Class :</string>
+    <string name="zero">0</string>
+    <string name="see_details"><![CDATA[Details >]]></string>
+    <string name="price_day">Price/Day :</string>
+    <string name="start_date">Start Date :</string>
+    <string name="date">Date</string>
+    <string name="pay">Pay</string>
+    <string name="total_price">Total Price</string>
+    <string name="end_date">End Date :</string>
+    <string name="confirm">Confirm</string>
+    <string name="reservation_detail">Reservation Detail</string>
+    <string name="reservation_payment">Reservation Payment</string>
+    <string name="card_number">Card Number</string>
+    <string name="expiry_date">Expiry Date</string>
+    <string name="cvv">CVV</string>
+    <string name="check_in_now">Check-in Now</string>
+    <string name="total_prices">Total Price :</string>
+    <string name="check_out_now">Check-out Now</string>
+    <string name="no_start_date">No Start Date</string>
+    <string name="no_end_date">No End Date</string>
+    <string name="check_ins">Check-in Date :</string>
 
     <dimen name="grid">80dp</dimen>
 </resources>

@@ -1,8 +1,256 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Checkout">
+    android:background="@color/gray"
+    android:orientation="vertical"
+    tools:context=".Checkin">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <androidx.cardview.widget.CardView
+        android:id="@+id/headerCard"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="-15dp"
+        app:cardCornerRadius="20dp"
+        app:cardElevation="10dp">
+
+        <RelativeLayout
+            android:id="@+id/dashboardCard"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/aqua"
+            android:paddingHorizontal="10dp"
+            android:paddingTop="5dp">
+
+            <ImageButton
+                android:id="@+id/backButton"
+                android:layout_width="60dp"
+                android:layout_height="50dp"
+                android:layout_alignBottom="@id/tittle"
+                android:layout_marginTop="20dp"
+                android:background="@android:color/transparent"
+                android:contentDescription="@string/back"
+                android:scaleType="center"
+                android:src="@drawable/ic_back"
+                android:textColor="@color/black"
+                android:textSize="38sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/tittle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="15dp"
+                android:text="@string/check_out"
+                android:textAlignment="center"
+                android:textSize="25sp"
+                android:textStyle="bold" />
+        </RelativeLayout>
+    </androidx.cardview.widget.CardView>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/headerCard"
+        android:layout_marginTop="-1dp"
+        android:background="#FFFFFF">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingHorizontal="20dp"
+            android:paddingVertical="20dp">
+
+            <TextView
+                android:id="@+id/border1"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginHorizontal="15dp"
+                android:background="#808080" />
+
+            <TextView
+                android:id="@+id/labelNoRoom"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/border1"
+                android:layout_marginTop="10dp"
+                android:text="@string/no_room"
+                android:textColor="@color/black"
+                android:textSize="22sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/NoRoom"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignTop="@id/labelNoRoom"
+                android:layout_marginStart="10dp"
+                android:layout_toEndOf="@id/labelNoRoom"
+                android:text="@string/zero"
+                android:textColor="@color/black"
+                android:textSize="22sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/labelClass"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/labelNoRoom"
+                android:layout_marginTop="5dp"
+                android:text="@string/classType"
+                android:textColor="@color/black"
+                android:textSize="22sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/Class"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignTop="@id/labelClass"
+                android:layout_alignBottom="@id/labelClass"
+                android:layout_marginStart="10dp"
+                android:layout_toEndOf="@id/labelClass"
+                android:text="@string/zero"
+                android:textColor="@color/black"
+                android:textSize="22sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/labelPrice"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/Class"
+                android:layout_marginTop="5dp"
+                android:text="@string/price_day"
+                android:textColor="@color/black"
+                android:textSize="22sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/price"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignTop="@id/labelPrice"
+                android:layout_alignBottom="@id/labelPrice"
+                android:layout_marginStart="10dp"
+                android:layout_toEndOf="@id/labelPrice"
+                android:text="@string/zero"
+                android:textColor="@color/black"
+                android:textSize="22sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/labelReservStart"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/labelTotalPrice"
+                android:layout_marginTop="10dp"
+                android:text="Start Date :"
+                android:textColor="@color/black"
+                android:textSize="22sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/labelReservEnd"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/labelReservStart"
+                android:layout_marginTop="10dp"
+                android:text="@string/end_date"
+                android:textColor="@color/black"
+                android:textSize="22sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/StartDate"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignTop="@id/labelReservStart"
+                android:layout_alignBottom="@id/labelReservStart"
+                android:layout_marginStart="10dp"
+                android:layout_toEndOf="@id/labelReservStart"
+                android:text="@string/zero"
+                android:textColor="@color/black"
+                android:textSize="22sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/EndDate"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignTop="@id/labelReservEnd"
+                android:layout_alignBottom="@id/labelReservEnd"
+                android:layout_marginStart="10dp"
+                android:layout_toEndOf="@id/labelReservEnd"
+                android:text="@string/zero"
+                android:textColor="@color/black"
+                android:textSize="22sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@id/labelTotalPrice"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/labelPrice"
+                android:layout_marginTop="10dp"
+                android:text="@string/total_prices"
+                android:textColor="@color/black"
+                android:textSize="22sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/TotalPrice"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignTop="@id/labelTotalPrice"
+                android:layout_alignBottom="@id/labelTotalPrice"
+                android:layout_marginStart="10dp"
+                android:layout_toEndOf="@id/labelReservStart"
+                android:text="@string/zero"
+                android:textColor="@color/black"
+                android:textSize="22sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/border2"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_below="@id/EndDate"
+                android:layout_marginHorizontal="15dp"
+                android:layout_marginTop="10dp"
+                android:background="#808080" />
+        </RelativeLayout>
+    </ScrollView>
+    <TextView
+        android:id="@+id/border"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_above="@id/checkoutButtons"
+        android:layout_marginHorizontal="15dp"
+        android:layout_marginTop="10dp"
+        android:background="#808080" />
+
+    <Button
+        android:id="@+id/checkoutButtons"
+        android:layout_width="match_parent"
+        android:layout_height="55dp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginHorizontal="10dp"
+        android:layout_marginVertical="10dp"
+        android:enabled="false"
+        android:backgroundTint="@color/aqua"
+        android:text="@string/check_out_now"
+        android:textAlignment="center"
+        android:textColor="@color/black"
+        android:textSize="22sp"
+        android:textStyle="bold"
+        app:cornerRadius="10dp" />
+</RelativeLayout>
