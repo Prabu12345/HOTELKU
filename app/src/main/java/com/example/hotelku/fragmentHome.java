@@ -122,11 +122,11 @@ public class fragmentHome extends Fragment {
                 @Override
                 public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                     String resivBy;
-                    Long checkInDateMillis;
-                    Long startDateMillis;
-                    Long endDateMillis;
-                    Boolean isCheck;
-                    Date endDate;
+                    Long checkInDateMillis = null;
+                    Long startDateMillis = null;
+                    Long endDateMillis = null;
+                    Boolean isCheck = null;
+                    Date endDate = null;
 
                     Boolean isFound = false;
                     
@@ -141,6 +141,7 @@ public class fragmentHome extends Fragment {
                         
                         if (resivBy != null && resivBy.equals(userId)) {
                             isFound = true;
+                            break;
                         }
                     }
 
@@ -149,20 +150,19 @@ public class fragmentHome extends Fragment {
                         checkin.setText(R.string.no_check_in);
                         startDateTV.setText(R.string.no_start_date);
                         endDateTV.setText(R.string.no_end_date);
-                        return;
+                    } else {
+                        noRoom.setText(room);
+                        if (isCheck != null && isCheck) {
+                            checkin.setText(function.convertDateToString(checkInDateMillis != null ? new Date(checkInDateMillis) : null));
+                        }
+                        if (startDateMillis != null) {
+                            startDateTV.setText(function.convertDateToString(startDateMillis != null ? new Date(startDateMillis) : null));
+                        }
+                        if (endDateMillis != null) {
+                            endDateTV.setText(function.convertDateToString(endDateMillis != null ? new Date(endDateMillis) : null));
+                        }
+                        checkoutprosses(endDate);
                     }
-
-                    noRoom.setText(room);
-                    if (isCheck != null && isCheck) {
-                        checkin.setText(function.convertDateToString(checkInDateMillis != null ? new Date(checkInDateMillis) : null));
-                    }
-                    if (startDateMillis != null) {
-                        startDateTV.setText(function.convertDateToString(startDateMillis != null ? new Date(startDateMillis) : null));
-                    }
-                    if (endDateMillis != null) {
-                        endDateTV.setText(function.convertDateToString(endDateMillis != null ? new Date(endDateMillis) : null));
-                    }
-                    checkoutprosses(endDate);
                 }
 
                 @Override

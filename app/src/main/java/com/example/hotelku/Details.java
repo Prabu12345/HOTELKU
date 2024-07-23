@@ -82,7 +82,11 @@ public class Details extends AppCompatActivity {
         endDate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                function.showDatePickerEndDate(Details.this, endDate);
+                if (startDate.getText().toString().isEmpty()) {
+                    Toast.makeText(Details.this, "Please select start date first.", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+                function.showDatePickerEndDate(Details.this, endDate, function.dateToLocalDate(function.convertStringToDate(startDate.getText().toString())));
             }
         });
 
@@ -213,7 +217,7 @@ public class Details extends AppCompatActivity {
         @RequiresApi(api = Build.VERSION_CODES.O)
         @Override
         public void afterTextChanged(Editable s) {
-            if (!startDate.getText().toString().isEmpty() && !endDate.getText().toString().isEmpty() && !startDate.getText().toString().equals(endDate.getText().toString())) {
+            if (!startDate.getText().toString().isEmpty() && !endDate.getText().toString().isEmpty()) {
                 try {
                     LocalDate start = function.dateToLocalDate(function.convertStringToDate(startDate.getText().toString()));
                     LocalDate end = function.dateToLocalDate(function.convertStringToDate(endDate.getText().toString()));

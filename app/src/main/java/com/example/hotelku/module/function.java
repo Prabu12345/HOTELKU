@@ -162,13 +162,12 @@ public class function {
     }
 
     @RequiresApi(api = Build.VERSION_CODES.O)
-    public static void showDatePickerEndDate(AppCompatActivity activity, EditText editText) {
+    public static void showDatePickerEndDate(AppCompatActivity activity, EditText editText, LocalDate startDate) {
         // Buat MaterialDatePicker dengan tipe DATE
         MaterialDatePicker.Builder<Long> builder = MaterialDatePicker.Builder.datePicker();
         builder.setTitleText("Select a reservation end date");
 
-        LocalDate today = LocalDate.now();
-        LocalDate tomorrow = today.plusDays(1);
+        LocalDate tomorrow = startDate.plusDays(1);
 
         CalendarConstraints.Builder contraintBuild = new CalendarConstraints.Builder();
         contraintBuild.setValidator(DateValidatorPointForward.from(localDatetoDate(tomorrow).getTime()));
