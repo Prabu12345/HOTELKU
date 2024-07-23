@@ -121,39 +121,48 @@ public class fragmentHome extends Fragment {
             roomRef.addValueEventListener(new ValueEventListener() {
                 @Override
                 public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                    String resivBy;
+                    Long checkInDateMillis;
+                    Long startDateMillis;
+                    Long endDateMillis;
+                    Boolean isCheck;
+                    Date endDate;
+                    
                     for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
                         room = snapshot.getKey();
-                        String resivBy = snapshot.child("resivBy").getValue(String.class);
-                        Long checkInDateMillis = snapshot.child("checkIn").child("date").getValue(Long.class);
-                        Long startDateMillis = snapshot.child("resivDateStart").getValue(Long.class);
-                        Long endDateMillis = snapshot.child("resivDateEnd").getValue(Long.class);
-                        Boolean isCheck = snapshot.child("checkIn").child("isCheck").getValue(Boolean.class);
-                        Date endDate = snapshot.child("resivDateEnd").getValue(Long.class) != null ? new Date(snapshot.child("resivDateEnd").getValue(Long.class)) : null;
+                        resivBy = snapshot.child("resivBy").getValue(String.class);
+                        checkInDateMillis = snapshot.child("checkIn").child("date").getValue(Long.class);
+                        startDateMillis = snapshot.child("resivDateStart").getValue(Long.class);
+                        endDateMillis = snapshot.child("resivDateEnd").getValue(Long.class);
+                        isCheck = snapshot.child("checkIn").child("isCheck").getValue(Boolean.class);
+                        endDate = snapshot.child("resivDateEnd").getValue(Long.class) != null ? new Date(snapshot.child("resivDateEnd").getValue(Long.class)) : null;
 
-                        if (resivBy != null && resivBy.equals(userId) || snapshot.getKey().equals(roomCh)) {
-                            if (roomCh == null) {
-                                roomCh = snapshot.getKey();
-                            } else {
-                                noRoom.setText(R.string.no_room);
-                                checkin.setText(R.string.no_check_in);
-                                startDateTV.setText(R.string.no_start_date);
-                                endDateTV.setText(R.string.no_end_date);
-                                return;
-                            }
-                            noRoom.setText(room);
-                            if (isCheck != null && isCheck) {
-                                checkin.setText(function.convertDateToString(checkInDateMillis != null ? new Date(checkInDateMillis) : null));
-                            }
-                            if (startDateMillis != null) {
-                                startDateTV.setText(function.convertDateToString(startDateMillis != null ? new Date(startDateMillis) : null));
-                            }
-                            if (endDateMillis != null) {
-                                endDateTV.setText(function.convertDateToString(endDateMillis != null ? new Date(endDateMillis) : null));
-                            }
-                            checkoutprosses(endDate);
-                            break;
+                        Boolean isFound = false;
+                        
+                        if (resivBy != null && resivBy.equals(userId)) {
+                            isFound = true;
                         }
                     }
+
+                    if (!isFound) {
+                        noRoom.setText(R.string.no_room);
+                        checkin.setText(R.string.no_check_in);
+                        startDateTV.setText(R.string.no_start_date);
+                        endDateTV.setText(R.string.no_end_date);
+                        return;
+                    }
+
+                    noRoom.setText(room);
+                    if (isCheck != null && isCheck) {
+                        checkin.setText(function.convertDateToString(checkInDateMillis != null ? new Date(checkInDateMillis) : null));
+                    }
+                    if (startDateMillis != null) {
+                        startDateTV.setText(function.convertDateToString(startDateMillis != null ? new Date(startDateMillis) : null));
+                    }
+                    if (endDateMillis != null) {
+                        endDateTV.setText(function.convertDateToString(endDateMillis != null ? new Date(endDateMillis) : null));
+                    }
+                    checkoutprosses(endDate);
                 }
 
                 @Override
