@@ -113,7 +113,7 @@ public class fragmentHome extends Fragment {
 
                 @Override
                 public void onCancelled(@NonNull DatabaseError databaseError) {
-                    Toast.makeText(getActivity(), "Failed to load user profile: " + databaseError.getMessage(), Toast.LENGTH_SHORT).show();
+                    System.out.println("Error getting data: " + databaseError.getMessage());
                 }
             });
 
@@ -167,7 +167,7 @@ public class fragmentHome extends Fragment {
 
                 @Override
                 public void onCancelled(@NonNull DatabaseError databaseError) {
-                    Toast.makeText(getActivity(), "Failed to load room data: " + databaseError.getMessage(), Toast.LENGTH_SHORT).show();
+                    System.out.println("Error getting data: " + databaseError.getMessage());
                 }
             });
         }
