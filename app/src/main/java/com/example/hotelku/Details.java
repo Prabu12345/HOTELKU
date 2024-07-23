@@ -141,7 +141,7 @@ public class Details extends AppCompatActivity {
                     Boolean isFound = false;
                     for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
                         String resivCheck =  snapshot.child("resivBy").getValue(String.class);
-                        if (!resivCheck.equals(userId)) {
+                        if (resivCheck.equals(userId)) {
                             isFound = true;
                             break;
                         }

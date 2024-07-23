@@ -41,6 +41,7 @@ public class fragmentHome extends Fragment {
     private ImageButton chInButton, reservButton, chOutButton;
     private ImageView avatarView;
     private String room;
+    private String roomCh;
 
     void initUI(View view) {
         tampilNama = view.findViewById(R.id.namaCard);
@@ -129,7 +130,16 @@ public class fragmentHome extends Fragment {
                         Boolean isCheck = snapshot.child("checkIn").child("isCheck").getValue(Boolean.class);
                         Date endDate = snapshot.child("resivDateEnd").getValue(Long.class) != null ? new Date(snapshot.child("resivDateEnd").getValue(Long.class)) : null;
 
-                        if (resivBy != null && resivBy.equals(userId)) {
+                        if (resivBy != null && resivBy.equals(userId) || snapshot.getKey().equals(roomCh)) {
+                            if (roomCh == null) {
+                                roomCh = snapshot.getKey();
+                            } else {
+                                noRoom.setText(R.string.no_room);
+                                checkin.setText(R.string.no_check_in);
+                                startDateTV.setText(R.string.no_start_date);
+                                endDateTV.setText(R.string.no_end_date);
+                                return;
+                            }
                             noRoom.setText(room);
                             if (isCheck != null && isCheck) {
                                 checkin.setText(function.convertDateToString(checkInDateMillis != null ? new Date(checkInDateMillis) : null));
@@ -173,6 +183,7 @@ public class fragmentHome extends Fragment {
 
                     roomRef.updateChildren(roomData).addOnCompleteListener(task -> {
                         room = null;
+                        roomCh = null;
                     }).addOnFailureListener(e -> {
                         Toast.makeText(getActivity(), "Failed to update room data: " + e.getMessage(), Toast.LENGTH_SHORT).show();
                     });
