@@ -127,6 +127,8 @@ public class fragmentHome extends Fragment {
                     Long endDateMillis;
                     Boolean isCheck;
                     Date endDate;
+
+                    Boolean isFound = false;
                     
                     for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
                         room = snapshot.getKey();
@@ -136,8 +138,6 @@ public class fragmentHome extends Fragment {
                         endDateMillis = snapshot.child("resivDateEnd").getValue(Long.class);
                         isCheck = snapshot.child("checkIn").child("isCheck").getValue(Boolean.class);
                         endDate = snapshot.child("resivDateEnd").getValue(Long.class) != null ? new Date(snapshot.child("resivDateEnd").getValue(Long.class)) : null;
-
-                        Boolean isFound = false;
                         
                         if (resivBy != null && resivBy.equals(userId)) {
                             isFound = true;
