@@ -47,6 +47,7 @@ public class Login extends AppCompatActivity {
         loginButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                loginButton.setEnabled(false);
                 loginUser();
             }
         });
@@ -66,6 +67,7 @@ public class Login extends AppCompatActivity {
 
         if (email.isEmpty() || password.isEmpty()) {
             Toast.makeText(Login.this, "Email and Password cannot be empty", Toast.LENGTH_SHORT).show();
+            loginButton.setEnabled(true);
             return;
         }
 
@@ -82,6 +84,7 @@ public class Login extends AppCompatActivity {
                             }
                         } else {
                             Toast.makeText(Login.this, "Error: " + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
+                            loginButton.setEnabled(true);
                         }
                     }
                 });

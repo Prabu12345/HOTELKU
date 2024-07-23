@@ -75,6 +75,7 @@ public class Payments extends AppCompatActivity {
         payButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                payButton.setEnabled(false);
                 confirmationPayment();
             }
         });
@@ -103,6 +104,7 @@ public class Payments extends AppCompatActivity {
                         tvstatus.setText(function.toAvailable(availa));
                         tvprice.setText(function.formatCurrency(prices));
                         tvtotalPrice.setText(function.formatCurrency(totalPrices));
+                        payButton.setEnabled(true);
                     } else {
                         Toast.makeText(Payments.this, "The room has been booked.", Toast.LENGTH_SHORT).show();
                         Toast.makeText(Payments.this, "Choose another room.", Toast.LENGTH_SHORT).show();
@@ -133,6 +135,7 @@ public class Payments extends AppCompatActivity {
                         if (!availa) {
                             if (etCard.getText().toString().isEmpty() || etCVV.getText().toString().isEmpty() || etExpiry.getText().toString().isEmpty()) {
                                 Toast.makeText(Payments.this, "Please fill all the details", Toast.LENGTH_SHORT).show();
+                                payButton.setEnabled(true);
                                 return;
                             }
 
@@ -149,6 +152,7 @@ public class Payments extends AppCompatActivity {
                                             finish();
                                         } else {
                                             Toast.makeText(Payments.this, "Failed to Reservation.", Toast.LENGTH_SHORT).show();
+                                            payButton.setEnabled(true);
                                         }
                                     });
                         } else {

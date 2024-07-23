@@ -75,6 +75,7 @@ public class Checkin extends AppCompatActivity {
         checkinButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                checkinButton.setEnabled(false);
                 checkinProses();
             }
         });
@@ -171,6 +172,7 @@ public class Checkin extends AppCompatActivity {
                             finish();
                         } else {
                             Toast.makeText(Checkin.this, "Failed to Check-in.", Toast.LENGTH_SHORT).show();
+                            checkinButton.setEnabled(true);
                         }
                     });
         } else {

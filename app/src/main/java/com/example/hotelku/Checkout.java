@@ -75,6 +75,7 @@ public class Checkout extends AppCompatActivity {
         checkoutButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                checkoutButton.setEnabled(false);
                 checkoutProcess();
             }
         });
@@ -172,6 +173,7 @@ public class Checkout extends AppCompatActivity {
                                 finish();
                             } else {
                                 Toast.makeText(Checkout.this, "Failed to Check-out.", Toast.LENGTH_SHORT).show();
+                                checkoutButton.setEnabled(false);
                             }
                         });
             }

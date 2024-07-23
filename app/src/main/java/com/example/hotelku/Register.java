@@ -62,7 +62,9 @@ public class Register extends AppCompatActivity {
         tanggalLahirET.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                tanggalLahirET.setEnabled(false);
                 function.showDatePickerBOD(Register.this, tanggalLahirET);
+                tanggalLahirET.setEnabled(true);
             }
         });
 
@@ -75,6 +77,7 @@ public class Register extends AppCompatActivity {
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                button.setEnabled(false);
                 registerUser();
             }
         });
@@ -89,12 +92,14 @@ public class Register extends AppCompatActivity {
 
         if (username.isEmpty() || email.isEmpty() || password.isEmpty() || address.isEmpty() || birthdate.isEmpty()) {
             Toast.makeText(Register.this, "All fields are required", Toast.LENGTH_SHORT).show();
+            button.setEnabled(true);
             return;
         }
 
         int selectedGenderId = jenisKelamin.getCheckedRadioButtonId();
         if (selectedGenderId == -1) {
             Toast.makeText(Register.this, "Gender is required", Toast.LENGTH_SHORT).show();
+            button.setEnabled(true);
             return;
         }
 
@@ -121,6 +126,7 @@ public class Register extends AppCompatActivity {
                                                     finish();
                                                 } else {
                                                     Toast.makeText(Register.this, "Error: " + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
+                                                    button.setEnabled(true);
                                                 }
                                             }
                                         });
@@ -131,6 +137,7 @@ public class Register extends AppCompatActivity {
                                 errorMessage = "This email address is already in use.";
                             }
                             Toast.makeText(Register.this, "Error: " + errorMessage, Toast.LENGTH_SHORT).show();
+                            button.setEnabled(true);
                         }
                     }
                 });
